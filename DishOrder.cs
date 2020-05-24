@@ -34,13 +34,15 @@ namespace HW_5
             {
                 if (c >= '0' && c <= '9')
                     throw new ArgumentException("You put a digit in the name");
-
             }
+            this.name = name;
         }
         public void SetPrice(int price)
         {
             if (price < 10)
                 throw new ArgumentException("You put the price less then 10");
+            else
+                this.price = price;
         }
 
         //-----methods-----
@@ -51,13 +53,17 @@ namespace HW_5
             name = "Someone is Hungry"; //default
             price = 10;                 //default
         }
-        public DishOrder(string nameOfOrderer, int price)
+        public DishOrder(string name, int price)
         {
-            SetName(nameOfOrderer);
+            SetName(name);
             SetPrice(price);
-            numOfDishes++;
+            AddNumOfDishes();
         }
             //
+        public void AddNumOfDishes()
+        {
+            numOfDishes++;
+        }
         public float CalculateTip(int percent)
         {
             return price / percent;
