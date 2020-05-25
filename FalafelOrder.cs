@@ -27,21 +27,11 @@ namespace HW_5
             //sets:
         public new void SetName(string name)
         {
-            if (name == null)
-                throw new ArgumentNullException("You did not put a name");
-            foreach (char c in name)
-            {
-                if (c >= '0' && c <= '9')
-                    throw new ArgumentException("You put a digit in the name");
-            }
-            this.name = name;
+            base.SetName(name);
         }
         public new void SetPrice(int price)
         {
-            if (price < 10)
-                throw new ArgumentException("You put the price less then 10");
-            else
-                this.price = price;
+            base.SetPrice(price);
         }
         public void SetFalafelBalls(int falafelBalls)
         {
@@ -66,11 +56,30 @@ namespace HW_5
             numOfFalafelDishes++;
 
         }
-        public FalafelOrder(string name, int price, int falafelBalls, bool hasTahini): base(string name, int price)
+        public FalafelOrder(string name, int price, int falafelBalls, bool hasTahini): base(name, price)
         {
             SetFalafelBalls(falafelBalls);
             SetHasTahini(hasTahini);
             AddNumOfDishes();
+        }
+            //
+        public void AddFalafelBalls (int num)
+        {
+            if (falafelBalls != 0 || falafelBalls != 3 || falafelBalls != 6 || falafelBalls != 9)
+                throw new ArgumentException("The falafel balls are NOT 0/3/6/9");
+            else
+            {
+                falafelBalls += num;
+                price += (2 * num);
+            }
+        }
+        public new void CalculateTip (int percent)
+        {
+            base.CalculateTip(percent);
+        }
+        public new string  Describe()
+        {
+            return base.Describe() + "falafel balls:" + falafelBalls + "Has Tahini:" + hasTahini;
         }
     }
 }
