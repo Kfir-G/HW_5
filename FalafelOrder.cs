@@ -29,7 +29,7 @@ namespace HW_5
         {
             base.SetName(name);
         }
-        public new void SetPrice(int price)
+        public new void SetPrice(float price)
         {
             base.SetPrice(price);
         }
