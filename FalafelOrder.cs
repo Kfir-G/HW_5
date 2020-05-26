@@ -58,7 +58,7 @@ namespace HW_5
             numOfFalafelDishes++;
 
         }
-        public FalafelOrder(string name, int price, int falafelBalls, bool hasTahini): base(name, price)
+        public FalafelOrder(string name, float price, int falafelBalls, bool hasTahini): base(name, price)
         {
             SetFalafelBalls(falafelBalls);
             SetHasTahini(hasTahini);

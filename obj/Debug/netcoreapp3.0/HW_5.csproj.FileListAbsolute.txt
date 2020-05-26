@@ -1,0 +1,11 @@
+C:\Users\kfirg\OneDrive - Ruppin Academic Center\מונחה עצמים C#\מטלות בית\מטלה 5 עד 19.6\HW_5\HW_5\bin\Debug\netcoreapp3.0\HW_5.exe
+C:\Users\kfirg\OneDrive - Ruppin Academic Center\מונחה עצמים C#\מטלות בית\מטלה 5 עד 19.6\HW_5\HW_5\bin\Debug\netcoreapp3.0\HW_5.deps.json
+C:\Users\kfirg\OneDrive - Ruppin Academic Center\מונחה עצמים C#\מטלות בית\מטלה 5 עד 19.6\HW_5\HW_5\bin\Debug\netcoreapp3.0\HW_5.runtimeconfig.json
+C:\Users\kfirg\OneDrive - Ruppin Academic Center\מונחה עצמים C#\מטלות בית\מטלה 5 עד 19.6\HW_5\HW_5\bin\Debug\netcoreapp3.0\HW_5.runtimeconfig.dev.json
+C:\Users\kfirg\OneDrive - Ruppin Academic Center\מונחה עצמים C#\מטלות בית\מטלה 5 עד 19.6\HW_5\HW_5\bin\Debug\netcoreapp3.0\HW_5.dll
+C:\Users\kfirg\OneDrive - Ruppin Academic Center\מונחה עצמים C#\מטלות בית\מטלה 5 עד 19.6\HW_5\HW_5\bin\Debug\netcoreapp3.0\HW_5.pdb
+C:\Users\kfirg\OneDrive - Ruppin Academic Center\מונחה עצמים C#\מטלות בית\מטלה 5 עד 19.6\HW_5\HW_5\obj\Debug\netcoreapp3.0\HW_5.csprojAssemblyReference.cache
+C:\Users\kfirg\OneDrive - Ruppin Academic Center\מונחה עצמים C#\מטלות בית\מטלה 5 עד 19.6\HW_5\HW_5\obj\Debug\netcoreapp3.0\HW_5.AssemblyInfoInputs.cache
+C:\Users\kfirg\OneDrive - Ruppin Academic Center\מונחה עצמים C#\מטלות בית\מטלה 5 עד 19.6\HW_5\HW_5\obj\Debug\netcoreapp3.0\HW_5.AssemblyInfo.cs
+C:\Users\kfirg\OneDrive - Ruppin Academic Center\מונחה עצמים C#\מטלות בית\מטלה 5 עד 19.6\HW_5\HW_5\obj\Debug\netcoreapp3.0\HW_5.dll
+C:\Users\kfirg\OneDrive - Ruppin Academic Center\מונחה עצמים C#\מטלות בית\מטלה 5 עד 19.6\HW_5\HW_5\obj\Debug\netcoreapp3.0\HW_5.pdb

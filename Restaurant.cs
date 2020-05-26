@@ -9,6 +9,8 @@ namespace HW_5
             int sizeArr = 50;       //size of arrays
             FalafelOrder [] falafelOrdersArr = new FalafelOrder[sizeArr];
             ShakshukaOrder[] shakshukaOrdersArr = new ShakshukaOrder[sizeArr];
+            ShakshukaOrder shakshukaOrderTemp;
+            FalafelOrder falafelOrderTemp;
             char order, tempVal;
             float totalBill = 0, tipToPay = 0;
             int idxShak = 0, idxFal = 0, i, tip;
@@ -20,14 +22,13 @@ namespace HW_5
                 {
                     case 'S': case 's':
                         Console.WriteLine("Enter your name");
-                        shakshukaOrdersArr[idxShak].SetName(Console.ReadLine());
-                        shakshukaOrdersArr[idxShak].SetPrice((float)22.50);
-                        shakshukaOrdersArr[idxShak].SetEggs(1);
-                        Console.WriteLine("Do you want to add an egg? (Y- for Yes\tN-for NO");
+                        shakshukaOrderTemp = new ShakshukaOrder (Console.ReadLine(), (float)22.5, 1, false);
+                        shakshukaOrdersArr[idxShak] = shakshukaOrderTemp;
+                        Console.WriteLine("Do you want to add an egg? (Y- for Yes\tN-for NO)");
                         tempVal = char.Parse(Console.ReadLine());
                         if (tempVal == 'Y' || tempVal == 'y')
                             shakshukaOrdersArr[idxShak].AddEgg();
-                        Console.WriteLine("Do you want your Shankshuka to be a spicy? (Y- for Yes\tN-for NO");
+                        Console.WriteLine("Do you want your Shankshuka to be a spicy? (Y- for Yes\tN-for NO)");
                         tempVal = char.Parse(Console.ReadLine());
                         if (tempVal == 'Y' || tempVal == 'y')
                             shakshukaOrdersArr[idxShak].SetIsSpicy(true);
@@ -36,12 +37,10 @@ namespace HW_5
 
                     case 'F': case 'f':
                         Console.WriteLine("Enter your name");
-                        falafelOrdersArr[idxFal].SetName(Console.ReadLine());
-                        falafelOrdersArr[idxFal].SetPrice((float)19.95);
-                        falafelOrdersArr[idxFal].SetFalafelBalls(3);
-                        Console.WriteLine("Enter if you want to add 0/3/6/9");
+                        falafelOrderTemp = new FalafelOrder(Console.ReadLine(), (float)19.95, 3, false);
+                        Console.WriteLine("Enter to add 0/3/6/9 eggs of falafel");
                         falafelOrdersArr[idxFal].AddFalafelBalls(int.Parse(Console.ReadLine()));
-                        Console.WriteLine("Do you want to add tahini? (Y- for Yes\tN-for NO");
+                        Console.WriteLine("Do you want to add tahini? (Y- for Yes\tN-for NO)");
                         tempVal = char.Parse(Console.ReadLine());
                         if (tempVal == 'Y' || tempVal == 'y')
                             falafelOrdersArr[idxFal].SetHasTahini(true);

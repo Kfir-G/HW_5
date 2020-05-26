@@ -37,7 +37,7 @@ namespace HW_5
             }
             this.name = name;
         }
-        public void SetPrice(int price)
+        public void SetPrice(float price)
         {
             if (price < 10)
                 throw new ArgumentException("You put the price less then 10");
@@ -53,7 +53,7 @@ namespace HW_5
             name = "Someone is Hungry"; //default
             price = 10;                 //default
         }
-        public DishOrder(string name, int price)
+        public DishOrder(string name, float price)
         {
             SetName(name);
             SetPrice(price);

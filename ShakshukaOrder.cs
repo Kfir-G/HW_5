@@ -25,7 +25,7 @@ namespace HW_5
             return numOfShakshukaDishes;
         }
             //sets:
-        public new void SetPrice (int price)
+        public new void SetPrice (float price)
         {
             base.SetPrice(price);
         }
@@ -55,7 +55,7 @@ namespace HW_5
             isSpicy= false;           //default
 
         }
-        public ShakshukaOrder(string name, int price , int eggs, bool isSpicy):base(name,price)
+        public ShakshukaOrder(string name, float price , int eggs, bool isSpicy):base(name,price)
         {
             SetEggs(eggs);
             SetIsSpicy(isSpicy);
