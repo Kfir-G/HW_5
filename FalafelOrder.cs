@@ -9,7 +9,7 @@ namespace HW_5
         //----data fields----
         //string name from->DishOrder
         //float price from->DishOrder
-        // static numOfDishes from->DishOrder
+        //static numOfDishes from->DishOrder
         protected static int  numOfFalafelDishes;
         protected int falafelBalls; // ONLY 0,3,6,9
         protected bool hasTahini; // if there's tahini aside
@@ -18,7 +18,7 @@ namespace HW_5
             //gets:
         public new int GetNumOfDishes()
         {
-            return numOfDishes;
+            return base.GetNumOfDishes();
         }
         public int GetNumOfFalafelDishes()
         {
@@ -51,6 +51,8 @@ namespace HW_5
         {
             // ++numOfDish
             // name = "Someone is Hungry"
+            SetPrice(0);
+            
             SetFalafelBalls(0); //default
             SetHasTahini(false); //default
             numOfFalafelDishes++;
@@ -73,11 +75,11 @@ namespace HW_5
                 price += (2 * num);
             }
         }
-        public new void CalculateTip (int percent)
+        public override float CalculateTip (int percent)
         {
-            base.CalculateTip(percent);
+            return base.CalculateTip(percent);
         }
-        public new string  Describe()
+        public override string  Describe()
         {
             return base.Describe() + "falafel balls:" + falafelBalls + "Has Tahini:" + hasTahini;
         }
