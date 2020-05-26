@@ -66,7 +66,7 @@ namespace HW_5
         }
         public virtual float CalculateTip(int percent)
         {
-            return (price / percent);
+            return (price *  (percent / 100));
         }
         public virtual string Describe()
         {
