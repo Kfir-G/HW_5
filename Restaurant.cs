@@ -30,7 +30,7 @@ namespace HW_5
                             break;
                         }
                         Console.WriteLine("Enter your name");
-                        shakshukaOrderTemp = new ShakshukaOrder (Console.ReadLine(), (float)22.5, 1, false);
+                        shakshukaOrderTemp = new ShakshukaOrder (Console.ReadLine(), 22.5f, 1, false);
                         shakshukaOrdersArr[idxShak] = shakshukaOrderTemp;
                         Console.WriteLine("Do you want to add an egg? (Y- for Yes\tN-for NO)");
                         tempVal = char.Parse(Console.ReadLine());
@@ -51,7 +51,7 @@ namespace HW_5
                             break;
                         }
                         Console.WriteLine("Enter your name");
-                        falafelOrderTemp = new FalafelOrder(Console.ReadLine(), (float)19.95, 3, false);
+                        falafelOrderTemp = new FalafelOrder(Console.ReadLine(), 19.95f, 3, false);
                         falafelOrdersArr[idxFal] = falafelOrderTemp;
                         Console.WriteLine("Enter to add 0/3/6/9 eggs of falafel");
                         falafelOrdersArr[idxFal].AddFalafelBalls(int.Parse(Console.ReadLine()));
