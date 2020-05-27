@@ -67,7 +67,7 @@ namespace HW_5
             //
         public void AddFalafelBalls (int num)
         {
-            if (falafelBalls != 0 || falafelBalls != 3 || falafelBalls != 6 || falafelBalls != 9)
+            if (num != 0 && num != 3 && num != 6 && num != 9)
                 throw new ArgumentException("The falafel balls are NOT 0/3/6/9");
             else
             {

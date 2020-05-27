@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace HW_5
 {
@@ -14,9 +15,10 @@ namespace HW_5
             char order, tempVal;
             float totalBill = 0, tipToPay = 0;
             int idxShak = 0, idxFal = 0, i, tip;
+            bool check = true;
 
             order = Menu();
-            while(order !='Q' || order !='q')
+            while(check)
             {
                 switch (order)
                 {
@@ -38,6 +40,7 @@ namespace HW_5
                     case 'F': case 'f':
                         Console.WriteLine("Enter your name");
                         falafelOrderTemp = new FalafelOrder(Console.ReadLine(), (float)19.95, 3, false);
+                        falafelOrdersArr[idxFal] = falafelOrderTemp;
                         Console.WriteLine("Enter to add 0/3/6/9 eggs of falafel");
                         falafelOrdersArr[idxFal].AddFalafelBalls(int.Parse(Console.ReadLine()));
                         Console.WriteLine("Do you want to add tahini? (Y- for Yes\tN-for NO)");
@@ -69,6 +72,7 @@ namespace HW_5
                         for (i = 0; i <= idxShak; i++)
                             tipToPay += shakshukaOrdersArr[i].CalculateTip(tip);
                         Console.WriteLine("You need to pay tip:{0} NIS", tipToPay);
+                        check = false; //exit menu
                         break;
 
                     default:
