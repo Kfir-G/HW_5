@@ -70,13 +70,13 @@ namespace HW_5
             price += 10;
             ++eggs; 
         }
-        public new float CalculateTip(int percent)
+        public new float CalculateTip(float percent)
         {
             return base.CalculateTip(percent);
         }
         public new string Describe()
         {
-            return base.Describe() + "number of eggs:" + eggs + "is it spicy:" + isSpicy;
+            return base.Describe() + "\tnumber of eggs:" + eggs + "is it spicy:" + isSpicy+"\n";
         }
     }
 }

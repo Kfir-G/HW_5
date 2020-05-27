@@ -13,13 +13,14 @@ namespace HW_5
             ShakshukaOrder shakshukaOrderTemp;
             FalafelOrder falafelOrderTemp;
             char order, tempVal;
-            float totalBill = 0, tipToPay = 0;
-            int idxShak = 0, idxFal = 0, i, tip;
+            float totalBill = 0, tipToPay = 0, tip;
+            int idxShak = 0, idxFal = 0, i;
             bool check = true;
 
             while(check)
             {
                 order = Menu();
+                Console.WriteLine("--------------------------------------------------\n");
                 switch (order)
                 {
                     //Shakshuka
@@ -64,7 +65,6 @@ namespace HW_5
                     
                     //Exit
                     case 'Q': case 'q':
-                        Console.WriteLine("////");
                         if(idxFal==0 && idxShak==0)
                         {
                             Console.WriteLine("You did not oreder");
@@ -73,29 +73,29 @@ namespace HW_5
                         }
                         if (idxFal > 0)
                         {
-                            for (i = 0; i <= idxFal; i++)
+                            for (i = 0; i < idxFal; i++)
                             {
                                 totalBill += falafelOrdersArr[i].GetPrice();
-                                Console.Write("{0}", i);
-                                falafelOrdersArr[i].Describe();
+                                Console.Write("{0}.", i+1);
+                                Console.WriteLine("{0}" ,falafelOrdersArr[i].Describe());
                             }
                         }
                         if (idxShak > 0)
                         {
-                            for (i = 0; i <= idxShak; i++)
+                            for (i = 0; i < idxShak; i++)
                             {
                                 totalBill += shakshukaOrdersArr[i].GetPrice();
-                                Console.Write("{0}", i);
-                                shakshukaOrdersArr[i].Describe();
+                                Console.Write("{0}.", i+1+idxFal);
+                                Console.WriteLine("{0}" ,shakshukaOrdersArr[i].Describe());
                             }
                         }
-                        Console.WriteLine("Total number of dishes:{0}", shakshukaOrdersArr[0].GetNumOfDishes()); //Genrally
+                        Console.WriteLine("Total number of dishes:{0}", idxShak+idxShak); 
                         Console.WriteLine("You need to pay:{0}", totalBill);
                         Console.WriteLine("Type precent of tip");
-                        tip = int.Parse(Console.ReadLine());
-                        for (i = 0; i <= idxFal; i++)
+                        tip = float.Parse(Console.ReadLine());
+                        for (i = 0; i < idxFal; i++)
                             tipToPay += falafelOrdersArr[i].CalculateTip(tip);
-                        for (i = 0; i <= idxShak; i++)
+                        for (i = 0; i < idxShak; i++)
                             tipToPay += shakshukaOrdersArr[i].CalculateTip(tip);
                         Console.WriteLine("You need to pay tip:{0} NIS", tipToPay);
                         check = false; //exit menu

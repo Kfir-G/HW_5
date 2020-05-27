@@ -75,13 +75,13 @@ namespace HW_5
                 price += (2 * num);
             }
         }
-        public new float CalculateTip (int percent)
+        public new float CalculateTip (float percent)
         {
             return base.CalculateTip(percent);
         }
         public new string  Describe()
         {
-            return base.Describe() + "falafel balls:" + falafelBalls + "Has Tahini:" + hasTahini;
+            return base.Describe() + "\tfalafel balls:" + falafelBalls + "\tHasTahini:" + hasTahini+"\n";
         }
     }
 }
