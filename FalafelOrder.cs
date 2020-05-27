@@ -75,11 +75,11 @@ namespace HW_5
                 price += (2 * num);
             }
         }
-        public override float CalculateTip (int percent)
+        public new float CalculateTip (int percent)
         {
             return base.CalculateTip(percent);
         }
-        public override string  Describe()
+        public new string  Describe()
         {
             return base.Describe() + "falafel balls:" + falafelBalls + "Has Tahini:" + hasTahini;
         }

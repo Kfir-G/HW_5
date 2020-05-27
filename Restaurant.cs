@@ -17,12 +17,18 @@ namespace HW_5
             int idxShak = 0, idxFal = 0, i, tip;
             bool check = true;
 
-            order = Menu();
             while(check)
             {
+                order = Menu();
                 switch (order)
                 {
+                    //Shakshuka
                     case 'S': case 's':
+                        if(idxShak==50)
+                        {
+                            Console.WriteLine("You reach to the limit of shakshuka orders");
+                            break;
+                        }
                         Console.WriteLine("Enter your name");
                         shakshukaOrderTemp = new ShakshukaOrder (Console.ReadLine(), (float)22.5, 1, false);
                         shakshukaOrdersArr[idxShak] = shakshukaOrderTemp;
@@ -36,8 +42,14 @@ namespace HW_5
                             shakshukaOrdersArr[idxShak].SetIsSpicy(true);
                         idxShak++;
                         break;
-
+                    
+                    //Falafel
                     case 'F': case 'f':
+                        if (idxFal == 50)
+                        {
+                            Console.WriteLine("You reach to the limit of falafel orders");
+                            break;
+                        }
                         Console.WriteLine("Enter your name");
                         falafelOrderTemp = new FalafelOrder(Console.ReadLine(), (float)19.95, 3, false);
                         falafelOrdersArr[idxFal] = falafelOrderTemp;
@@ -49,19 +61,33 @@ namespace HW_5
                             falafelOrdersArr[idxFal].SetHasTahini(true);
                         idxFal++;
                             break;
-
+                    
+                    //Exit
                     case 'Q': case 'q':
-                        for (i = 0; i <= idxFal; i++)
+                        Console.WriteLine("////");
+                        if(idxFal==0 && idxShak==0)
                         {
-                            totalBill += falafelOrdersArr[i].GetPrice();
-                            Console.Write("{0}", i);
-                            falafelOrdersArr[i].Describe();
+                            Console.WriteLine("You did not oreder");
+                            check = false; //exit menu
+                            break;
                         }
-                        for(i =0; i<=idxShak; i++)
+                        if (idxFal > 0)
                         {
-                            totalBill += shakshukaOrdersArr[i].GetPrice();
-                            Console.Write("{0}", i);
-                            shakshukaOrdersArr[i].Describe();
+                            for (i = 0; i <= idxFal; i++)
+                            {
+                                totalBill += falafelOrdersArr[i].GetPrice();
+                                Console.Write("{0}", i);
+                                falafelOrdersArr[i].Describe();
+                            }
+                        }
+                        if (idxShak > 0)
+                        {
+                            for (i = 0; i <= idxShak; i++)
+                            {
+                                totalBill += shakshukaOrdersArr[i].GetPrice();
+                                Console.Write("{0}", i);
+                                shakshukaOrdersArr[i].Describe();
+                            }
                         }
                         Console.WriteLine("Total number of dishes:{0}", shakshukaOrdersArr[0].GetNumOfDishes()); //Genrally
                         Console.WriteLine("You need to pay:{0}", totalBill);
@@ -79,11 +105,12 @@ namespace HW_5
                         Console.WriteLine("Incorrect Input");
                         break;
                 }
-                order = Menu();
             }
+            Console.WriteLine("Bye Bye...");
         }
         public static char Menu()
         {
+            Console.WriteLine("\n--------------------------------------------------");
             Console.WriteLine("Enter a letter:");
             Console.WriteLine("Put a - S\tfor oredring a Shakshuka");
             Console.WriteLine("Put a - F\tfor ordering a Falafel");

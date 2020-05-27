@@ -64,11 +64,11 @@ namespace HW_5
         {
             numOfDishes++;
         }
-        public virtual float CalculateTip(int percent)
+        public float CalculateTip(int percent)
         {
             return (price *  (percent / 100));
         }
-        public virtual string Describe()
+        public string Describe()
         {
             return "The name of the orderer "+name + "cost of the dish: " + price;
         }

@@ -70,11 +70,11 @@ namespace HW_5
             price += 10;
             ++eggs; 
         }
-        public override float CalculateTip(int percent)
+        public new float CalculateTip(int percent)
         {
             return base.CalculateTip(percent);
         }
-        public override string Describe()
+        public new string Describe()
         {
             return base.Describe() + "number of eggs:" + eggs + "is it spicy:" + isSpicy;
         }
