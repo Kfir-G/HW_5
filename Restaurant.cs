@@ -65,25 +65,34 @@ namespace HW_5
                         }
                         try
                         {
-
                             Console.WriteLine("Enter your name");
                             falafelOrderTemp = new FalafelOrder(Console.ReadLine(), 19.95f, 3, false);
-                            falafelOrdersArr[idxFal] = falafelOrderTemp;
+                        }
+                        catch (ArgumentNullException e2) //not put a name
+                        {
+                            Console.WriteLine(e2.Message);
+                            falafelOrderTemp = new FalafelOrder(AddName(), 19.95f, 3, false);
+                        }
+                        catch (ArgumentException e3) //put a number in the name 
+                        {
+                            Console.WriteLine(e3.Message);
+                            falafelOrderTemp = new FalafelOrder(AddName(), 19.95f, 3, false);
+                        }
+                        falafelOrdersArr[idxFal] = falafelOrderTemp;
+                        try
+                        {
                             Console.WriteLine("Enter to add 0/3/6/9 eggs of falafel");
                             falafelOrdersArr[idxFal].AddFalafelBalls(int.Parse(Console.ReadLine()));
-                            Console.WriteLine("Do you want to add tahini? (Y- for Yes\tN-for NO)");
-                            tempVal = char.Parse(Console.ReadLine());
-                            if (tempVal == 'Y' || tempVal == 'y')
-                                falafelOrdersArr[idxFal].SetHasTahini(true);
                         }
-                        catch (ArgumentNullException e) //not put a name
+                        catch(ArgumentException e4) // NOT  0/3/6/9
                         {
-
+                            Console.WriteLine(e4.Message);
+                            falafelOrdersArr[idxFal].AddFalafelBalls(AddingFalafelsBalls());
                         }
-                        catch (ArgumentException e1) //put a number in the name & falafel balls are not 3/6/9
-                        {
-
-                        }
+                        Console.WriteLine("Do you want to add tahini? (Y- for Yes\tN-for NO)");
+                        tempVal = char.Parse(Console.ReadLine());
+                        if (tempVal == 'Y' || tempVal == 'y')
+                            falafelOrdersArr[idxFal].SetHasTahini(true);
                         idxFal++;
                         break;
 
@@ -154,6 +163,19 @@ namespace HW_5
                 }
             }
             return name;
+        }
+        public static int AddingFalafelsBalls()
+        {
+            bool check = false;
+            int num = -1;
+            while (!check)
+            {
+                Console.WriteLine("Enter again falafel balls (ONLY!:0/3/6/9)");
+                num = int.Parse(Console.ReadLine());
+                if (num == 0 || num == 3 || num == 6 || num == 9)
+                    check = true;
+            }
+            return num;
         }
     }
 }
