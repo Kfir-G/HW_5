@@ -76,7 +76,7 @@ namespace HW_5
         }
         public new string Describe()
         {
-            return base.Describe() + "\tnumber of eggs:" + eggs + "is it spicy:" + isSpicy+"\n";
+            return base.Describe() + "\tnumber of eggs:" + eggs + " is it spicy:" + isSpicy+"\n";
         }
     }
 }
