@@ -9,8 +9,8 @@ namespace HW_5
             int sizeArr = 50;       //size of arrays
             FalafelOrder[] falafelOrdersArr = new FalafelOrder[sizeArr];
             ShakshukaOrder[] shakshukaOrdersArr = new ShakshukaOrder[sizeArr];
-            ShakshukaOrder shakshukaOrderTemp;
-            FalafelOrder falafelOrderTemp;
+            ShakshukaOrder shakshukaOrderTemp = null;
+            FalafelOrder falafelOrderTemp = null;
             char order, tempVal;
             float totalBill = 0, tipToPay = 0, tip;
             int idxShak = 0, idxFal = 0, i;
@@ -23,8 +23,7 @@ namespace HW_5
                 switch (order)
                 {
                     //Shakshuka
-                    case 'S':
-                    case 's':
+                    case 'S': case 's':
                         if (idxShak == 50)
                         {
                             Console.WriteLine("You reach to the limit of shakshuka orders");
@@ -34,69 +33,79 @@ namespace HW_5
                         {
                             Console.WriteLine("Enter your name");
                             shakshukaOrderTemp = new ShakshukaOrder(Console.ReadLine(), 22.5f, 1, false);
-                            shakshukaOrdersArr[idxShak] = shakshukaOrderTemp;
-                            Console.WriteLine("Do you want to add an egg? (Y- for Yes\tN-for NO)");
-                            tempVal = char.Parse(Console.ReadLine());
-                            if (tempVal == 'Y' || tempVal == 'y')
-                                shakshukaOrdersArr[idxShak].AddEgg();
-                            Console.WriteLine("Do you want your Shankshuka to be a spicy? (Y- for Yes\tN-for NO)");
-                            tempVal = char.Parse(Console.ReadLine());
-                            if (tempVal == 'Y' || tempVal == 'y')
-                                shakshukaOrdersArr[idxShak].SetIsSpicy(true);
                         }
-                        catch (ArgumentNullException)
+                        catch(ArgumentNullException e) // user did not put a name
                         {
-
+                            Console.WriteLine(e.Message);
+                            shakshukaOrderTemp = new ShakshukaOrder(AddName(), 22.5f, 1, false);
                         }
+                        catch (ArgumentException e1) // user puts digits in the name
+                        {
+                            Console.WriteLine(e1.Message);
+                            shakshukaOrderTemp = new ShakshukaOrder( AddName(), 22.5f, 1, false);
+                        }
+                        shakshukaOrdersArr[idxShak] = shakshukaOrderTemp;
+                        Console.WriteLine("Do you want to add an egg? (Y- for Yes\tN-for NO)");
+                        tempVal = char.Parse(Console.ReadLine());
+                        if (tempVal == 'Y' || tempVal == 'y')
+                             shakshukaOrdersArr[idxShak].AddEgg();
+                        Console.WriteLine("Do you want your Shankshuka to be a spicy? (Y- for Yes\tN-for NO)");
+                        tempVal = char.Parse(Console.ReadLine());
+                        if (tempVal == 'Y' || tempVal == 'y')
+                                shakshukaOrdersArr[idxShak].SetIsSpicy(true);
                         idxShak++;
                         break;
 
                     //Falafel
-                    case 'F':
-                    case 'f':
+                    case 'F': case 'f':
                         if (idxFal == 50)
                         {
                             Console.WriteLine("You reach to the limit of falafel orders");
                             break;
                         }
-                        Console.WriteLine("Enter your name");
-                        falafelOrderTemp = new FalafelOrder(Console.ReadLine(), 19.95f, 3, false);
-                        falafelOrdersArr[idxFal] = falafelOrderTemp;
-                        Console.WriteLine("Enter to add 0/3/6/9 eggs of falafel");
-                        falafelOrdersArr[idxFal].AddFalafelBalls(int.Parse(Console.ReadLine()));
-                        Console.WriteLine("Do you want to add tahini? (Y- for Yes\tN-for NO)");
-                        tempVal = char.Parse(Console.ReadLine());
-                        if (tempVal == 'Y' || tempVal == 'y')
-                            falafelOrdersArr[idxFal].SetHasTahini(true);
+                        try
+                        {
+
+                            Console.WriteLine("Enter your name");
+                            falafelOrderTemp = new FalafelOrder(Console.ReadLine(), 19.95f, 3, false);
+                            falafelOrdersArr[idxFal] = falafelOrderTemp;
+                            Console.WriteLine("Enter to add 0/3/6/9 eggs of falafel");
+                            falafelOrdersArr[idxFal].AddFalafelBalls(int.Parse(Console.ReadLine()));
+                            Console.WriteLine("Do you want to add tahini? (Y- for Yes\tN-for NO)");
+                            tempVal = char.Parse(Console.ReadLine());
+                            if (tempVal == 'Y' || tempVal == 'y')
+                                falafelOrdersArr[idxFal].SetHasTahini(true);
+                        }
+                        catch (ArgumentNullException e) //not put a name
+                        {
+
+                        }
+                        catch (ArgumentException e1) //put a number in the name & falafel balls are not 3/6/9
+                        {
+
+                        }
                         idxFal++;
                         break;
 
                     //Exit
-                    case 'Q':
-                    case 'q':
+                    case 'Q': case 'q':
                         if (idxFal == 0 && idxShak == 0)
                         {
                             Console.WriteLine("You did not oreder");
                             check = false; //exit menu
                             break;
                         }
-                        if (idxFal > 0)
+                        for (i = 0; i < idxFal; i++)
                         {
-                            for (i = 0; i < idxFal; i++)
-                            {
-                                totalBill += falafelOrdersArr[i].GetPrice();
-                                Console.Write("{0}.", i + 1);
-                                Console.WriteLine("{0}", falafelOrdersArr[i].Describe());
-                            }
+                            totalBill += falafelOrdersArr[i].GetPrice();
+                            Console.Write("{0}.", i + 1);
+                            Console.WriteLine("{0}", falafelOrdersArr[i].Describe());
                         }
-                        if (idxShak > 0)
+                        for (i = 0; i < idxShak; i++)
                         {
-                            for (i = 0; i < idxShak; i++)
-                            {
-                                totalBill += shakshukaOrdersArr[i].GetPrice();
-                                Console.Write("{0}.", i + 1 + idxFal);
-                                Console.WriteLine("{0}", shakshukaOrdersArr[i].Describe());
-                            }
+                            totalBill += shakshukaOrdersArr[i].GetPrice();
+                            Console.Write("{0}.", i + 1 + idxFal);
+                            Console.WriteLine("{0}", shakshukaOrdersArr[i].Describe());
                         }
                         Console.WriteLine("Total number of dishes:{0}", idxShak + idxShak);
                         Console.WriteLine("You need to pay:{0}", totalBill);
@@ -125,6 +134,26 @@ namespace HW_5
             Console.WriteLine("Put a - F\tfor ordering a Falafel");
             Console.WriteLine("Put a - Q\tfor END order and start eating");
             return char.Parse(Console.ReadLine());
+        }
+        public static string AddName()
+        {
+            string name = null;
+            bool check = false;
+            while(!check)
+            {
+                Console.WriteLine("Please put again the name");
+                name = Console.ReadLine();
+                if (name != String.Empty)
+                {
+                    check = true;
+                    foreach (char c in name)
+                    {
+                        if (c >= '0' && c <= '9')
+                            check = false;
+                    }
+                }
+            }
+            return name;
         }
     }
 }

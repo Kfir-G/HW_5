@@ -28,7 +28,7 @@ namespace HW_5
             //sets:
         public void SetName(string name)
         {
-            if (name == null)
+            if (name == String.Empty)
                 throw new ArgumentNullException("You did not put a name");
             foreach(char c in name)
             {
